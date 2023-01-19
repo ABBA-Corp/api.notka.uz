@@ -62,9 +62,10 @@ SECURE_CONTENT_TYPE_NOSNIFF = env.bool(
 # STATIC
 # ------------------------
 STATICFILES_STORAGE = "whitenoise.storage.CompressedManifestStaticFilesStorage"
+STATIC_ROOT = env("DJANGO_STATIC")
 # MEDIA
 # ------------------------------------------------------------------------------
-
+MEDIA_ROOT = env("DJANGO_MEDIA")
 # EMAIL
 # ------------------------------------------------------------------------------
 # https://docs.djangoproject.com/en/dev/ref/settings/#default-from-email
@@ -159,7 +160,7 @@ SPECTACULAR_SETTINGS["SERVERS"] = [  # noqa F405
 ]
 # Your stuff...
 # ------------------------------------------------------------------------------
-SPECTACULAR_SETTINGS["SERVE_PERMISSIONS"] = ["rest_framework.permissions.IsAdminUser"]
+# SPECTACULAR_SETTINGS["SERVE_PERMISSIONS"] = ["rest_framework.permissions.IsAdminUser"]
 REST_FRAMEWORK["DEFAULT_RENDERER_CLASSES"] = [
     'rest_framework.renderers.JSONRenderer',
 ]
