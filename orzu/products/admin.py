@@ -23,4 +23,4 @@ class ProductCountryAdmin(admin.ModelAdmin):
 
 @admin.register(Banners)
 class BannersAdmin(admin.ModelAdmin):
-    pass
+    list_display = ["thumbnail_preview"]

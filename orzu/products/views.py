@@ -5,9 +5,9 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.decorators import action
 
-from .models import Product, ProductCategory
+from .models import Product, ProductCategory, Banners
 from .serializers import ProductListSerializer, ProductDetailSerializer, ProductCategorySerializer, \
-    ProductTopListSerializer
+    ProductTopListSerializer, ProductBannerSerializer
 
 
 class ProductPagination(PageNumberPagination):
@@ -40,4 +40,12 @@ class ProductCategoryListView(APIView):
     def get(self, request):
         products = ProductCategory.objects.all()
         serializer = ProductCategorySerializer(products, many=True)
+        return Response(serializer.data)
+
+
+class ProductBannerListView(APIView):
+    @extend_schema(responses={200: ProductBannerSerializer(many=True)})
+    def get(self, request):
+        banners = Banners.objects.all()
+        serializer = ProductBannerSerializer(banners, many=True)
         return Response(serializer.data)
