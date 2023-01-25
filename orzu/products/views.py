@@ -1,7 +1,8 @@
 from drf_spectacular.utils import extend_schema
-from rest_framework import viewsets
+from rest_framework import viewsets, mixins
 from rest_framework.response import Response
 from rest_framework.views import APIView
+from rest_framework.viewsets import GenericViewSet
 
 from .models import Product, ProductCategory, Banners
 from .serializers import (
@@ -23,17 +24,13 @@ class ProductViewSet(viewsets.ModelViewSet):
         return self.serializer_class
 
 
-class ProductCategoryListView(APIView):
-    @extend_schema(responses={200: ProductCategorySerializer(many=True)})
-    def get(self, request):
-        products = ProductCategory.objects.all()
-        serializer = ProductCategorySerializer(products, many=True)
-        return Response(serializer.data)
+class ProductCategoryListView(mixins.ListModelMixin,
+                            GenericViewSet):
+    queryset = ProductCategory.objects.all()
+    serializer_class = ProductCategorySerializer
 
 
-class ProductBannerListView(APIView):
-    @extend_schema(responses={200: ProductBannerSerializer(many=True)})
-    def get(self, request):
-        banners = Banners.objects.all()
-        serializer = ProductBannerSerializer(banners, many=True)
-        return Response(serializer.data)
+class ProductBannerListView(mixins.ListModelMixin,
+                            GenericViewSet):
+    queryset = Banners.objects.all()
+    serializer_class = ProductBannerSerializer
