@@ -311,3 +311,9 @@ SPECTACULAR_SETTINGS = {
 }
 # Your stuff...
 # ------------------------------------------------------------------------------
+CORS_ALLOWED_ORIGINS = [
+    "https://notka.uz",
+    "https://api.notka.uz",
+    "http://localhost:8000",
+    "http://127.0.0.1:8000",
+]
