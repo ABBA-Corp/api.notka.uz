@@ -16,7 +16,7 @@ class ProductPagination(PageNumberPagination):
 
 class ProductViewSet(viewsets.ModelViewSet):
     queryset = Product.objects.select_related("category", "country")
-    pagination_class = ProductPagination
+    # pagination_class = ProductPagination
     list_serializer_class = ProductListSerializer
     serializer_class = ProductDetailSerializer
     filterset_fields = ["category_id", "country_id"]
