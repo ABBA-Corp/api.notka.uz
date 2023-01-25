@@ -11,6 +11,19 @@ class ProductDetailSerializer(serializers.ModelSerializer):
 
 
 class ProductCategorySerializer(serializers.ModelSerializer):
+    thumbnail_landscape = HyperlinkedSorlImageField(
+        '752x350',
+        options={"crop": "center"},
+        source='landscape_photo',
+        read_only=True
+    )
+    thumbnail_photo = HyperlinkedSorlImageField(
+        '400x600',
+        options={"crop": "center"},
+        source='photo',
+        read_only=True
+    )
+
     class Meta:
         model = ProductCategory
         fields = "__all__"

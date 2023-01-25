@@ -48,6 +48,8 @@ class ProductCategory(models.Model):
     title_uz = models.CharField(_('Заголовок uz'), max_length=100)
     title_en = models.CharField(_('Заголовок en'), max_length=100, null=True, blank=True)
     title_ru = models.CharField(_('Заголовок ru'), max_length=100, null=True, blank=True)
+    landscape_photo = ImageField(_('Альбомное фото'), null=True, blank=True)
+    photo = ImageField(_('Фото'), null=True, blank=True)
 
     class Meta:
         verbose_name = _('Категория товара')
