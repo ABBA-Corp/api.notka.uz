@@ -7,8 +7,8 @@ from orzu.products.models import Product, ProductCategory, ProductCountry, Banne
 @admin.register(Product)
 class ProductAdmin(OrderedModelAdmin):
     raw_id_fields = ['category', 'country']
-    list_display_fields = ['name']
-    list_display = ('name', 'move_up_down_links', "thumbnail_preview")
+    list_display_fields = ['name_uz']
+    list_display = ('name_uz', 'move_up_down_links', "thumbnail_preview")
 
 
 @admin.register(ProductCategory)

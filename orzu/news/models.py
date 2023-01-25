@@ -9,8 +9,12 @@ from orzu.news.instances import get_news_path
 class News(models.Model):
     photo = ImageField(_("Изображение"), upload_to=get_news_path)
     landscape_photo = ImageField(_("Альбомное изображение"))
-    title = models.CharField(_("Заголовок"), max_length=150)
-    description = models.TextField(_("Описание"))
+    title_uz = models.CharField(_("Заголовок uz"), max_length=150)
+    title_en = models.CharField(_("Заголовок en"), max_length=150, null=True, blank=True)
+    title_ru = models.CharField(_("Заголовок ru"), max_length=150, null=True, blank=True)
+    description_uz = models.TextField(_("Описание uz"))
+    description_en = models.TextField(_("Описание en"), null=True, blank=True)
+    description_ru = models.TextField(_("Описание ru"), null=True, blank=True)
     created_on = models.DateField(_("Создано"), auto_now_add=True)
 
     class Meta:

@@ -8,12 +8,16 @@ from orzu.products.instances import get_shots_path, get_banners_path
 
 
 class Product(OrderedModel):
-    name = models.CharField(max_length=200)
+    name_uz = models.CharField(max_length=200)
+    name_en = models.CharField(max_length=200, null=True, blank=True)
+    name_ru = models.CharField(max_length=200, null=True, blank=True)
     packaging_photo = ImageField(_("Изображение пакета"), upload_to=get_shots_path)
     photo = ImageField(_("Изображение"), upload_to=get_shots_path)
     category = models.ForeignKey("ProductCategory", on_delete=models.CASCADE,
                                  verbose_name=_("Категория продукта"))
-    description = models.TextField(_("Описание"))
+    description_uz = models.TextField(_("Описание uz"))
+    description_en = models.TextField(_("Описание en"), null=True, blank=True)
+    description_ru = models.TextField(_("Описание ru"), null=True, blank=True)
     weight = models.FloatField(_("Масса"), blank=True, null=True)
     artikul = models.CharField(_("Артикул"), max_length=50)
     carbohydrates = models.FloatField(_("Углеводы"))
@@ -29,7 +33,7 @@ class Product(OrderedModel):
         order_with_respect_to = "category"
 
     def __str__(self):
-        return "{} | Категория: {}".format(self.name, self.category.title)
+        return "{} | Категория: {}".format(self.name_uz, self.category.title_uz)
 
     @property
     def thumbnail_preview(self):
@@ -41,25 +45,29 @@ class Product(OrderedModel):
 
 
 class ProductCategory(models.Model):
-    title = models.CharField(_('Заголовок'), max_length=100)
+    title_uz = models.CharField(_('Заголовок uz'), max_length=100)
+    title_en = models.CharField(_('Заголовок en'), max_length=100, null=True, blank=True)
+    title_ru = models.CharField(_('Заголовок ru'), max_length=100, null=True, blank=True)
 
     class Meta:
         verbose_name = _('Категория товара')
         verbose_name_plural = _('Категории товаров')
 
     def __str__(self):
-        return "%s" % self.title
+        return "%s" % self.title_uz
 
 
 class ProductCountry(models.Model):
-    name = models.CharField(_('Название страны'), max_length=50)
+    name_uz = models.CharField(_('Название страны uz'), max_length=50)
+    name_en = models.CharField(_('Название страны en'), max_length=50, null=True, blank=True)
+    name_ru = models.CharField(_('Название страны ru'), max_length=50, null=True, blank=True)
 
     class Meta:
         verbose_name = _('Страна изготовления')
         verbose_name_plural = _('Страны изготовления')
 
     def __str__(self):
-        return "%s" % self.name
+        return "%s" % self.name_uz
 
 
 class Banners(models.Model):
