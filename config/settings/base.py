@@ -311,6 +311,7 @@ SPECTACULAR_SETTINGS = {
 }
 # Your stuff...
 # ------------------------------------------------------------------------------
+
 CORS_ALLOWED_ORIGINS = [
     "https://notka.uz",
     "https://api.notka.uz",
