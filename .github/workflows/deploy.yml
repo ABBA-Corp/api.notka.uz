@@ -42,4 +42,5 @@ jobs:
           /home/Api/orzu/venv/bin/python /home/Api/orzu/manage_prod.py compilemessages
           /home/Api/orzu/venv/bin/python /home/Api/orzu/manage_prod.py collectstatic --noinput
           systemctl daemon-reload
-          systemctl status orzu.service
+          systemctl restart orzu.service
+          sh /home/devops/orzu_back.sh "${{ github.event.head_commit.message }}"
