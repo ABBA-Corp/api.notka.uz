@@ -11,7 +11,7 @@ class Product(OrderedModel):
     name_uz = models.CharField(max_length=200)
     name_en = models.CharField(max_length=200, null=True, blank=True)
     name_ru = models.CharField(max_length=200, null=True, blank=True)
-    packaging_photo = ImageField(_("Изображение пакета"), upload_to=get_shots_path)
+    top_photo = ImageField(_("Изображение в блоке TOP"), upload_to=get_shots_path)
     photo = ImageField(_("Изображение"), upload_to=get_shots_path)
     category = models.ForeignKey("ProductCategory", on_delete=models.CASCADE,
                                  verbose_name=_("Категория продукта"))
@@ -48,7 +48,7 @@ class ProductCategory(models.Model):
     title_uz = models.CharField(_('Заголовок uz'), max_length=100)
     title_en = models.CharField(_('Заголовок en'), max_length=100, null=True, blank=True)
     title_ru = models.CharField(_('Заголовок ru'), max_length=100, null=True, blank=True)
-    landscape_photo = ImageField(_('Альбомное фото'), null=True, blank=True)
+    slider_photo = ImageField(_('Фотография слайдера'), null=True, blank=True)
     photo = ImageField(_('Фото'), null=True, blank=True)
 
     class Meta:
