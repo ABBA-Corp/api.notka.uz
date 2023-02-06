@@ -164,3 +164,4 @@ SPECTACULAR_SETTINGS["SERVERS"] = [  # noqa F405
 REST_FRAMEWORK["DEFAULT_RENDERER_CLASSES"] = [
     'rest_framework.renderers.JSONRenderer',
 ]
+CORS_ALLOW_ALL_ORIGINS = True
