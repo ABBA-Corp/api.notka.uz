@@ -11,6 +11,9 @@ class Product(OrderedModel):
     name_uz = models.CharField(max_length=200)
     name_en = models.CharField(max_length=200, null=True, blank=True)
     name_ru = models.CharField(max_length=200, null=True, blank=True)
+    subtitle_uz = models.CharField(max_length=150, null=True, blank=True)
+    subtitle_en = models.CharField(max_length=150, null=True, blank=True)
+    subtitle_ru = models.CharField(max_length=150, null=True, blank=True)
     top_photo = ImageField(_("Изображение в блоке TOP"), upload_to=get_shots_path)
     photo = ImageField(_("Изображение"), upload_to=get_shots_path)
     category = models.ForeignKey("ProductCategory", on_delete=models.CASCADE,

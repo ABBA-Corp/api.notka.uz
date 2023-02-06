@@ -26,7 +26,7 @@ class ProductViewSet(viewsets.ModelViewSet):
 
 class ProductCategoryListView(mixins.ListModelMixin,
                             GenericViewSet):
-    queryset = ProductCategory.objects.all()
+    queryset = ProductCategory.objects.all().order_by('pk')
     serializer_class = ProductCategorySerializer
 
 
